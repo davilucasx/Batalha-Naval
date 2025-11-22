@@ -15,13 +15,13 @@ int main() {
     printf("\n-----------------------\n");
     
     switch(escolha) {
-        case 0:
+        case 1:
             printf("(1) Novo Jogo\n");
             break;
-        case 1:
+        case 2:
             printf("(2) Continuar Jogando\n");
             break;
-        case 2:
+        case 3:
             printf("(3) Instrucoes\n");
             break;
         default:
