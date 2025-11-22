@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "funcoes/LeitorMD.c"
 int main() {
      int escolha;
      int entrada_invalida;
@@ -31,6 +32,9 @@ int main() {
                 break;
             case 3:
                 printf("(3) Instrucoes\n");
+                printf("--- Conteúdo do Arquivo instrucoes.md ---\n");
+                leitor_markdown("../instrucoes/instrucoes.md"); // Chama a função para ler e exibir o conteúdo do arquivo Markdown nas instruções
+                printf("--------------------------------------\n");
                 break;
             default:
                 printf("Opcao invalida. Tente novamente.\n");
@@ -39,5 +43,6 @@ int main() {
                 break;
             }
     } while (entrada_invalida == 1);
+    system("pause||read -p 'Pressione Enter para continuar...' -n 1");
     return 0;
 }
