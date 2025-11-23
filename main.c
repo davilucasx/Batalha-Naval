@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "funcoes/LeitorMD.c"
+#include <stdlib.h>
+#include "biblioteca/leitorTXT.h"
 int main() {
      int escolha;
      int entrada_invalida;
@@ -32,8 +33,8 @@ int main() {
                 break;
             case 3:
                 printf("(3) Instrucoes\n");
-                printf("--- Conteúdo do Arquivo instrucoes.md ---\n");
-                leitor_markdown("../instrucoes/instrucoes.md"); // Chama a função para ler e exibir o conteúdo do arquivo Markdown nas instruções
+                printf("--- Conteudo do Arquivo instrucoes.md ---\n");
+                leitor_texto("../instrucoes/instrucoes.TXT"); // Chama a função para ler e exibir o conteúdo do arquivo Markdown nas instruções
                 printf("--------------------------------------\n");
                 break;
             default:
