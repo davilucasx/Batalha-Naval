@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "biblioteca/leitorTXT.h"
+#include "biblioteca/matriz.h"
 int main() {
      int escolha;
      int entrada_invalida;
@@ -27,6 +28,7 @@ int main() {
                 break;
             case 1:
                 printf("(1) Novo Jogo\n");
+                matriz();
                 break;
             case 2:
                 printf("(2) Continuar Jogando\n");
