@@ -34,7 +34,7 @@ int main() {
             case 3:
                 printf("(3) Instrucoes\n");
                 printf("--- Conteudo do Arquivo instrucoes.md ---\n");
-                leitor_texto("../instrucoes/instrucoes"); // Chama a função para ler e exibir o conteúdo do arquivo Markdown nas instruções
+                leitor_texto("../instrucoes/instrucoes.txt"); // Chama a função para ler e exibir o conteúdo do arquivo Markdown nas instruções
                 printf("--------------------------------------\n");
                 break;
             default:
