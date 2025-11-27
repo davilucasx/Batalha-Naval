@@ -12,6 +12,7 @@
                 "${workspaceFolder}/main.c",
                 "${workspaceFolder}/funcoes/leitorTXT.c",
                 "${workspaceFolder}/funcoes/leitorMATRIZ.c",
+                "${workspaceFolder}/objetos/navios.c",
                 "-o",
                 "${workspaceFolder}/output/main.exe"
             ],

@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include "biblioteca/leitorTXT.h"
 #include "biblioteca/leitorMATRIZ.h"
+#include "biblioteca/leitorNAVIO.h"
 int main() {
      int escolha;
      int entrada_invalida;
+     char voltar;
 
 // Exibe o menu e lê a escolha do usuário
     do{
@@ -28,7 +30,15 @@ int main() {
                 break;
             case 1:
                 printf("(1) Novo Jogo\n");
+                system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
+                printf("-----------------------\n");
+                printf("MODELO DO TABLULEIRO\n");
+                printf("---------------------\n");
                 leitor_matriz();
+                printf("\n");
+                navio_pequeno();
+                navio_medio();
+                navio_grande();
                 break;
             case 2:
                 printf("(2) Continuar Jogando\n");
@@ -46,6 +56,14 @@ int main() {
                 break;
             }
     } while (entrada_invalida == 1);
+    printf("Retornar ao menu inicial, Sim (s) ou Nao (n) ?");
+    scanf(" %c", &voltar);
+    system("clear||cls");
+    if(voltar == 's' || voltar == 'S'){
+        main();
+    }
+    else{
     system("pause||read -p 'Pressione Enter para continuar...' -n 1");
+    }
     return 0;
 }

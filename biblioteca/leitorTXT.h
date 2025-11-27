@@ -1,6 +1,6 @@
-#ifndef _LEITORMD_H
-#define _LEITORMD_H
+#ifndef _LEITORTXT_H
+#define _LEITORTXT_H
 
 void leitor_texto(const char* nomearquivo);
 
-#endif // LEITORMD_H
+#endif 
