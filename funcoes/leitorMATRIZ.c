@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "../biblioteca/matriz.h"
-void matriz(){
+#include "../biblioteca/leitorMATRIZ.h"
+void leitor_matriz(){
     char i,j;
     printf("  ");
     for(i= 0; i < 8; i++){

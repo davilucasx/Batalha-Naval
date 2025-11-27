@@ -11,7 +11,7 @@
                 "-g3",
                 "${workspaceFolder}/main.c",
                 "${workspaceFolder}/funcoes/leitorTXT.c",
-                "${workspaceFolder}/menu/matriz.c",
+                "${workspaceFolder}/funcoes/leitorMATRIZ.c",
                 "-o",
                 "${workspaceFolder}/output/main.exe"
             ],
