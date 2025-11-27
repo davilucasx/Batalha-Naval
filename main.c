@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "biblioteca/leitorTXT.h"
-#include "biblioteca/leitorMATRIZ.h"
-#include "biblioteca/leitorNAVIO.h"
+#include "biblioteca/matriz.h"
+#include "biblioteca/navio.h"
 int main() {
-     int escolha;
-     int entrada_invalida;
-     char voltar;
+     int escolha; // Escolha a opção do menu
+     int entrada_invalida; // Caso não escolha uma opção válida no menu
+     char voltar; // Voltador de um menu para a tela ininical
 
-// Exibe o menu e lê a escolha do usuário
+// Exibe o menu
     do{
         entrada_invalida = 0;
         printf("-----------------------\n");
@@ -24,6 +24,7 @@ int main() {
         scanf("%d", &escolha);
         system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
 
+// Escolha do usuário
         switch(escolha) {
             case 0:
                 printf("(0) Sair do Jogo\n");
@@ -34,7 +35,7 @@ int main() {
                 printf("-----------------------\n");
                 printf("MODELO DO TABLULEIRO\n");
                 printf("---------------------\n");
-                leitor_matriz();
+                matriz();
                 printf("\n");
                 navio_pequeno();
                 navio_medio();
@@ -46,7 +47,7 @@ int main() {
             case 3:
                 printf("(3) Instrucoes\n");
                 printf("--- Conteudo do Arquivo instrucoes.md ---\n");
-                leitor_texto("../instrucoes/instrucoes.txt"); // Chama a função para ler e exibir o conteúdo do arquivo Markdown nas instruções
+                leitor_texto("../instrucoes/instrucoes.txt");
                 printf("--------------------------------------\n");
                 break;
             default:
@@ -56,14 +57,13 @@ int main() {
                 break;
             }
     } while (entrada_invalida == 1);
+
+    //Comando para retornar ao menu inicial ou sair do programa
     printf("Retornar ao menu inicial, Sim (s) ou Nao (n) ?");
     scanf(" %c", &voltar);
     system("clear||cls");
     if(voltar == 's' || voltar == 'S'){
         main();
-    }
-    else{
-    system("pause||read -p 'Pressione Enter para continuar...' -n 1");
     }
     return 0;
 }

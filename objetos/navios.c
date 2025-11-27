@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../biblioteca/leitorNAVIO.h"
+#include "../biblioteca/navio.h"
 void navio_pequeno(){
     char navio[2] = {
         'P','P'
