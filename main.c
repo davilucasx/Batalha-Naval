@@ -3,10 +3,12 @@
 #include "biblioteca/leitorTXT.h"
 #include "biblioteca/matriz.h"
 #include "biblioteca/navio.h"
+#include "biblioteca/criarTABULEIRO.h"
 int main() {
      int escolha; // Escolha a opção do menu
      int entrada_invalida; // Caso não escolha uma opção válida no menu
      char voltar; // Voltador de um menu para a tela ininical
+     char novo_jogo; // Confirmação para iniciar um novo jogo
 
 // Exibe o menu
     do{
@@ -27,10 +29,8 @@ int main() {
 // Escolha do usuário
         switch(escolha) {
             case 0:
-                printf("(0) Sair do Jogo\n");
                 break;
             case 1:
-                printf("(1) Novo Jogo\n");
                 system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
                 printf("-----------------------\n");
                 printf("MODELO DO TABLULEIRO\n");
@@ -40,12 +40,19 @@ int main() {
                 navio_pequeno();
                 navio_medio();
                 navio_grande();
+                printf("\nDeseja iniciar um novo jogo? Sim (s) ou Nao (n): ");
+                scanf(" %c", &novo_jogo);
+                if(novo_jogo == 's' || novo_jogo == 'S'){   
+                    system("clear||cls");
+                    criar_matriz_tabuleiro();
+                } else {
+                    printf("Retornando ao menu principal...\n");
+                }
                 break;
             case 2:
                 printf("(2) Continuar Jogando\n");
                 break;
             case 3:
-                printf("(3) Instrucoes\n");
                 printf("--- Conteudo do Arquivo instrucoes.md ---\n");
                 leitor_texto("../instrucoes/instrucoes.txt");
                 printf("--------------------------------------\n");
