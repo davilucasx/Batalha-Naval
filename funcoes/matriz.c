@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include "../biblioteca/matriz.h"
-void matriz(){
-    char i,j;
+void matriz()
+{
+    char i, j;
     printf("  ");
-    for(i= 0; i < 8; i++){
+    for (i = 0; i < 8; i++)
+    {
         printf("%d ", i);
     }
     printf("\n");
-    for(i = 0; i < 8; i++){
+    for (i = 0; i < 8; i++)
+    {
         printf("%d ", i);
-        for(j = 0; j < 8; j++){
+        for (j = 0; j < 8; j++)
+        {
             printf("? ");
         }
         printf("\n");
