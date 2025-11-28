@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../biblioteca/criarTABULEIRO.h"
-#include "../biblioteca/matriz.h"
-#include "../biblioteca/navio.h"
 struct Jogador
 {
     char nome[50];
@@ -46,20 +44,32 @@ void criar_matriz_tabuleiro()
             }
             printf("\n");
         }
+        printf("-----------------\n");
         printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
-
         // Anexa os navios no tabuleiro
         printf("\n");
         while (i < 3)
         {
             printf("Posicione o navio %i no tabuleiro!\n", i + 1);
-            printf("Digite H para horizontal ou V para vertical: ");
-            scanf(" %c", &orientacao);
-            printf("Digite as coordenadas\n");
+            if (i == 0)
+            {
+                printf("Navio 1: P P\n");
+            }
+            else if (i == 1)
+            {
+                printf("Navio 2: M M M\n");
+            }
+            else
+            {
+                printf("Navio 3: G G G G\n");
+            }
+            printf("Digite a posicao inicial no tabuleiro, linha e coluna nessa ordem\n");
             printf("LINHA: ");
             scanf("%d", &linha);
             printf("COLUNA: ");
             scanf("%d", &coluna);
+            printf("Agora digite H para horizontal ou V para vertical: ");
+            scanf(" %c", &orientacao);
             // Adiciona o navio ao tabuleiro escolhendo a posição inicial linha e coluna
             if (orientacao == 'H' || orientacao == 'h')
             {

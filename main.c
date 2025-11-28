@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "biblioteca/leitorTXT.h"
-#include "biblioteca/matriz.h"
-#include "biblioteca/navio.h"
 #include "biblioteca/criarTABULEIRO.h"
 int main()
 {
@@ -35,16 +33,8 @@ int main()
         case 1:
             system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
             printf("-----------------------\n");
-            printf("MODELO DO TABLULEIRO\n");
-            printf("---------------------\n");
-            matriz();
-            printf("\n");
-            navio_pequeno();
-            navio_medio();
-            navio_grande();
-            printf("\n");
-            system("pause");
-            system("clear||cls");
+            printf("-------Novo Jogo-------\n");
+            printf("-----------------------\n");
             criar_matriz_tabuleiro();
             break;
         case 2:
