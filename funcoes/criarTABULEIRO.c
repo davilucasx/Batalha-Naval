@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../biblioteca/criarTABULEIRO.h"
+#include "../biblioteca/mostrarTABULEIRO.H"
+
 struct Jogador
 {
     char nome[50];
@@ -34,16 +36,7 @@ void criar_matriz_tabuleiro()
     {
         // Exibe o tabuleiro
         printf("Tabuleiro Inicial:\n");
-        printf("  0 1 2 3 4 5 6 7\n");
-        for (int i = 0; i < 8; i++)
-        {
-            printf("%d ", i);
-            for (int j = 0; j < 8; j++)
-            {
-                printf("%c ", tabuleiro[i][j]);
-            }
-            printf("\n");
-        }
+        mostrar_tabuleiro(tabuleiro);
         printf("-----------------\n");
         printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
         // Anexa os navios no tabuleiro
@@ -142,16 +135,7 @@ void criar_matriz_tabuleiro()
                 printf("TABULEIRO ATUALIZADO (+)(+)(+)\n");
             }
 
-            printf("  0 1 2 3 4 5 6 7\n");
-            for (int i = 0; i < 8; i++)
-            {
-                printf("%d ", i);
-                for (int j = 0; j < 8; j++)
-                {
-                    printf("%c ", tabuleiro[i][j]);
-                }
-                printf("\n");
-            }
+            mostrar_tabuleiro(tabuleiro);
             printf("\n");
             i++;
         }
@@ -183,16 +167,7 @@ void criar_matriz_tabuleiro()
     for (int jogador_atual = 0; jogador_atual < 2; jogador_atual++)
     {
         printf("Tabuleiro de %s:\n", jogador[jogador_atual].nome);
-        printf("  0 1 2 3 4 5 6 7\n");
-        for (int i = 0; i < 8; i++)
-        {
-            printf("%d ", i);
-            for (int j = 0; j < 8; j++)
-            {
-                printf("%c ", jogador[jogador_atual].tabuleiro[i][j]);
-            }
-            printf("\n");
-        }
+        mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);
         printf("\n");
     }
 }

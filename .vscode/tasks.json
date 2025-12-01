@@ -12,6 +12,7 @@
                 "${workspaceFolder}/main.c",
                 "${workspaceFolder}/funcoes/leitorTXT.c",
                 "${workspaceFolder}/funcoes/criarTABULEIRO.c",
+                "${workspaceFolder}/funcoes/mostrarTABULEIRO.c",
                 "-o",
                 "${workspaceFolder}/output/main.exe"
             ],
