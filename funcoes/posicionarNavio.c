@@ -13,10 +13,20 @@ int posicionarNavio(char tabuleiro[8][8], int linha, int coluna, char orientacao
             if(coluna + 3 > 8){
                 return 0;
             }
+            for (int j = 0; j < 3; j++){
+                if (tabuleiro[linha][coluna+j] != '~'){
+                    return 0;
+                }
+            }
         }
         if(i == 2){
             if(coluna + 4 > 8){
                 return 0;
+            }
+            for (int j = 0; j < 3; j++){
+                if (tabuleiro[linha][coluna+j] != '~'){
+                    return 0;
+                }
             }
         }
         return 1;
@@ -32,10 +42,20 @@ int posicionarNavio(char tabuleiro[8][8], int linha, int coluna, char orientacao
             if(linha + 3 > 8){
                 return 0;
             }
+            for (int j = 0; j < 3; j++){
+                if (tabuleiro[linha][coluna+j] != '~'){
+                    return 0;
+                }
+            }
         }
         if(i == 2){
             if(linha + 4 > 8){
                 return 0;
+            }
+            for (int j = 0; j < 3; j++){
+                if (tabuleiro[linha][coluna+j] != '~'){
+                    return 0;
+                }
             }
         }
         return 1;
