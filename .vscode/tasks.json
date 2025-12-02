@@ -12,6 +12,10 @@
                 "${workspaceFolder}/main.c",
                 "${workspaceFolder}/funcoes/leitorTXT.c",
                 "${workspaceFolder}/funcoes/criarTABULEIRO.c",
+                "${workspaceFolder}/funcoes/mostrarTABULEIRO.c",
+                "${workspaceFolder}/funcoes/menu.c",
+                "${workspaceFolder}/funcoes/navio.c",
+                "${workspaceFolder}/funcoes/posicionarNavio.c",
                 "-o",
                 "${workspaceFolder}/output/main.exe"
             ],

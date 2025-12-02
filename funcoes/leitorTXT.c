@@ -16,4 +16,6 @@ void leitor_texto(const char *nomearquivo)
     }
 
     fclose(arquivo);
+    
+
 }
