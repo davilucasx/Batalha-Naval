@@ -2,9 +2,9 @@
 #include "../biblioteca/mostrarTABULEIRO.H"
 
 void mostrar_tabuleiro (char tabuleiro[8][8]){
-    printf("  0 1 2 3 4 5 6 7\n");
+    printf("  1 2 3 4 5 6 7 8\n");
     for (int i = 0; i < 8; i++){
-        printf("%d ", i);
+        printf("%d ", i+1);
         for (int j = 0; j < 8; j++){
             printf("%c ", tabuleiro[i][j]);
         }
