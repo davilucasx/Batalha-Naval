@@ -30,6 +30,7 @@ void menu(){
         switch (escolha)
         {
         case 0:
+            exit(1);
             break;
         case 1:
             system("clear||cls"); // Limpa a tela para melhor visualizacao do menu

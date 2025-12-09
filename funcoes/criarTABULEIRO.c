@@ -39,7 +39,6 @@ void criar_matriz_tabuleiro()
         // Exibe o tabuleiro
         printf("Tabuleiro Inicial:\n");
         mostrar_tabuleiro(tabuleiro);
-        printf("-----------------\n");
         printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
         // Anexa os navios no tabuleiro
         printf("\n");
@@ -65,7 +64,8 @@ void criar_matriz_tabuleiro()
             linha--;
             if(linha < 0 || linha > 7){
                 system("clear||cls");
-                printf("Opcao de linha invalida! \n");
+                printf("Opcao de linha invalida! \n\n");
+                mostrar_tabuleiro(tabuleiro);
                 continue;
             }
             printf("COLUNA: ");
@@ -73,7 +73,8 @@ void criar_matriz_tabuleiro()
             coluna--;
             if(coluna < 0 || coluna > 7){
                 system("clear||cls");
-                printf("Opcao de coluna invalida! \n");
+                printf("Opcao de coluna invalida! \n\n");
+                mostrar_tabuleiro(tabuleiro);
                 continue;
             }
 
