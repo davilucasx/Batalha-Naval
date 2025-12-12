@@ -60,5 +60,6 @@ int posicionarNavio(char tabuleiro[8][8], int linha, int coluna, char orientacao
         }
         return 1;
     }
+    return -1;
 }
 

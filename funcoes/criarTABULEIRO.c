@@ -6,11 +6,26 @@
 #include "../biblioteca/navio.h"
 #include "../biblioteca/posicionarNavio.h"
 
+    int jogar(int linha, int coluna, char tabuleiro[8][8], char tabuleiro_oculto[8][8]) {
+    linha--;
+    coluna--;
+    if(tabuleiro[linha][coluna] == 'P' || tabuleiro[linha][coluna] == 'M' || tabuleiro[linha][coluna] == 'G') {
+        tabuleiro_oculto[linha][coluna] = 'X';  // acertou
+        printf("Acertou o navio!\n");
+        return 1;
+    } else {
+        tabuleiro_oculto[linha][coluna] = 'O';  // errou
+        printf("agua!\n");
+        return 0;
+    }
+}
+
 struct Jogador
 {
     char nome[50];
     char tabuleiro[8][8];
     char tabuleiro_oculto[8][8];
+    int acertos;
 };
 void criar_matriz_tabuleiro()
 {
@@ -137,10 +152,42 @@ void criar_matriz_tabuleiro()
     }
     system("clear||cls");
     printf("Mostrar os tabuleiros dos jogadores:\n");
+    for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    jogador[0].tabuleiro_oculto[i][j] = '~';
+                    jogador[1].tabuleiro_oculto[i][j] = '~';
+                }
+            }
     for (int jogador_atual = 0; jogador_atual < 2; jogador_atual++)
     {
         printf("Tabuleiro de %s:\n", jogador[jogador_atual].nome);
         mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);
+        
         printf("\n");
     }
+   
+    printf("Vamos jogar ! \n");
+    int vencedor = 0;
+    int turno = 0;
+    jogador[0].acertos = 0;
+    jogador[1].acertos = 0;
+    while(vencedor == 0){
+        printf("Jogador %d Escolha a linha: ",turno + 1);
+        scanf("%d", &linha);
+        printf("Jogador %d Escolha a coluna para atacar: ", turno + 1);
+        scanf("%d", &coluna);
+        if (jogar(linha,coluna, jogador[!turno].tabuleiro, jogador[turno].tabuleiro_oculto)) jogador[turno].acertos++;
+        mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);
+        
+        if (jogador[turno].acertos == 9) vencedor = turno + 1;
+
+        if (turno == 1){
+            turno = 0;
+        } else turno = 1;
+        
+    }
+    printf("\nParabens %s!", jogador[vencedor-1].nome);
+    system("pause");
 }
