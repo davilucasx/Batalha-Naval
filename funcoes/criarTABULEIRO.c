@@ -53,14 +53,15 @@ void criar_matriz_tabuleiro()
     {
         // Exibe o tabuleiro
         printf("Tabuleiro Inicial:\n");
-        mostrar_tabuleiro(tabuleiro);
-        printf("-----------------\n");
-        printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
-        // Anexa os navios no tabuleiro
-        printf("\n");
+        
 
         while (i < 3)
         {
+            mostrar_tabuleiro(tabuleiro);
+            printf("-----------------\n");
+            printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
+            // Anexa os navios no tabuleiro
+            printf("\n");
             printf("Posicione o navio %i no tabuleiro!\n", i + 1);
             if (i == 0)
             {
@@ -80,7 +81,7 @@ void criar_matriz_tabuleiro()
             linha--;
             if(linha < 0 || linha > 7){
                 system("clear||cls");
-                printf("Opcao de linha invalida! \n");
+                printf("Erro: Opcao de linha invalida! \n");
                 continue;
             }
             printf("COLUNA: ");
@@ -88,7 +89,7 @@ void criar_matriz_tabuleiro()
             coluna--;
             if(coluna < 0 || coluna > 7){
                 system("clear||cls");
-                printf("Opcao de coluna invalida! \n");
+                printf("Erro: Opcao de coluna invalida! \n");
                 continue;
             }
 
@@ -96,7 +97,7 @@ void criar_matriz_tabuleiro()
             scanf(" %c", &orientacao);
             if(orientacao != 'H' && orientacao != 'h' && orientacao != 'V' && orientacao != 'v'){
                 system("clear||cls");
-                printf("Orientacao invalida! \n");
+                printf("Erro: Orientacao invalida! \n");
                 continue;
             }
 
@@ -104,7 +105,7 @@ void criar_matriz_tabuleiro()
             if (!valido)
             {
                 system("clear||cls");
-                printf("Posicao invalida para o navio %i! Tente novamente.\n", i + 1);
+                printf("Erro: Posicao invalida para o navio %i! Tente novamente.\n", i + 1);
                 continue;
             }
             navio(tabuleiro, linha, coluna, orientacao, i);
@@ -123,8 +124,7 @@ void criar_matriz_tabuleiro()
                 printf("TABULEIRO ATUALIZADO (+)(+)(+)\n");
             }
 
-            mostrar_tabuleiro(tabuleiro);
-            printf("\n");
+            
             i++;
         }
 
@@ -135,6 +135,7 @@ void criar_matriz_tabuleiro()
                 jogador[jogador_atual].tabuleiro[i][j] = tabuleiro[i][j];
             }
         }
+        mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);
         printf("%s, voce posicionou todos os seus navios!\n", jogador[jogador_atual].nome);
         system("pause");
         system("clear||cls");
