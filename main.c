@@ -3,6 +3,7 @@
 #include "biblioteca/leitorTXT.h"
 #include "biblioteca/criarTABULEIRO.h"
 #include "biblioteca/menu.h"
+
 int main()
 {
     char voltar;

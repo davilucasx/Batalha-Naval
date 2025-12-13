@@ -15,7 +15,7 @@
         return 1;
     } else {
         tabuleiro_oculto[linha][coluna] = 'O';  // errou
-        printf("agua!\n");
+        printf("Errou o navio, agua!\n");
         return 0;
     }
 }
@@ -175,7 +175,9 @@ void criar_matriz_tabuleiro()
     jogador[0].acertos = 0;
     jogador[1].acertos = 0;
     while(vencedor == 0){
-        printf("Jogador %d Escolha a linha: ",turno + 1);
+        printf("jogador %d prepare-se para atacar o jogador %d \n",turno + 1, !turno + 1);
+        printf("\n");
+        printf("Jogador %d Escolha a linha para atacar: ",turno + 1);
         scanf("%d", &linha);
         printf("Jogador %d Escolha a coluna para atacar: ", turno + 1);
         scanf("%d", &coluna);
@@ -189,6 +191,6 @@ void criar_matriz_tabuleiro()
         } else turno = 1;
         
     }
-    printf("\nParabens %s!", jogador[vencedor-1].nome);
+    printf("\nParabens %s!\n", jogador[vencedor-1].nome);
     system("pause");
 }
