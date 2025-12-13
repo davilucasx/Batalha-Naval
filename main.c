@@ -4,6 +4,14 @@
 #include "biblioteca/criarTABULEIRO.h"
 #include "biblioteca/menu.h"
 
+struct Jogador
+{
+    char nome[50];
+    char tabuleiro[8][8];
+    char tabuleiro_oculto[8][8];
+    int acertos;
+};
+
 int main()
 {
     char voltar;
