@@ -7,7 +7,10 @@ void mostrar_tabuleiro (char tabuleiro[8][8]){
         printf("%d ", i+1);
         for (int j = 0; j < 8; j++){
             printf("%c ", tabuleiro[i][j]);
-        }
-        printf("\n");
+
+        }      
+        printf("\n");    
     }
+    printf("-----------------\n");
+    printf("\n");
 }
