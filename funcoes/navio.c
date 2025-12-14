@@ -3,7 +3,7 @@
 #include "../biblioteca/navio.h"
 
 
-
+// Funcao que adiciona o adiciona o navio ao "TABULEIRO"//
 void navio(char tabuleiro[8][8], int linha, int coluna, char orientacao, int i){
     if (orientacao == 'H' || orientacao == 'h')
             {

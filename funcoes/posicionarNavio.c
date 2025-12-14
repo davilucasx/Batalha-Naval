@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../biblioteca/posicionarNavio.h"
-
+// Funcao que verifica se a posicao do navio e valida no tabuleiro //
 int posicionarNavio(char tabuleiro[8][8], int linha, int coluna, char orientacao, int i){
     if(orientacao == 'H' || orientacao == 'h'){
         if(i == 0){
