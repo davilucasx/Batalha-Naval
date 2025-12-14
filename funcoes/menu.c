@@ -5,6 +5,7 @@
 #include "../biblioteca/leitorTXT.h"
 
 
+
 void menu(){
     int escolha;          // Escolha a opção do menu
     int entrada_invalida; // Caso não escolha uma opção válida no menu
@@ -31,7 +32,6 @@ void menu(){
         {
         case 0:
             exit(1);
-            break;
         case 1:
             system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
             printf("-----------------------\n");

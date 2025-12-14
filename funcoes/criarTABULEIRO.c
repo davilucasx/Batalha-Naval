@@ -5,27 +5,35 @@
 #include "../biblioteca/mostrarTABULEIRO.h"
 #include "../biblioteca/navio.h"
 #include "../biblioteca/posicionarNavio.h"
+#include "../biblioteca/menu.h"
+#include "../biblioteca/jogar.h"
 
-struct Jogador
-{
-    char nome[50];
-    char tabuleiro[8][8];
-    char tabuleiro_oculto[8][8];
-};
+
 void criar_matriz_tabuleiro()
 {
-    struct Jogador jogador[2]; // Dois jogadores
+    Jogador jogador[2]; // Dois jogadores
     int linha, coluna, i = 0;
     char orientacao;
-    char tabuleiro[8][8];
     // Inicializa o tabuleiro com '~' representando água
+    
+    for (int jog = 0; jog < 2; jog++){
+        jogador[jog].acertos_navio[0] = 2;
+        jogador[jog].acertos_navio[1] = 3;
+        jogador[jog].acertos_navio[2] = 4;
+    }
+    jogador[0].acertos = 0;
+    jogador[1].acertos = 0;
     for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 8; j++)
         {
-            tabuleiro[i][j] = '~';
+            jogador[0].tabuleiro[i][j] = '~';
+            jogador[1].tabuleiro[i][j] = '~';
+            jogador[0].tabuleiro_oculto[i][j] = '~';
+            jogador[1].tabuleiro_oculto[i][j] = '~';
         }
     }
+    
     printf("Bem-vindo ao jogo Batalha Naval!\n");
     printf("Jogador 1, digite seu nome: ");
     scanf("%s", jogador[0].nome);
@@ -38,13 +46,15 @@ void criar_matriz_tabuleiro()
     {
         // Exibe o tabuleiro
         printf("Tabuleiro Inicial:\n");
-        mostrar_tabuleiro(tabuleiro);
-        printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
-        // Anexa os navios no tabuleiro
-        printf("\n");
+        
 
         while (i < 3)
         {
+            mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);
+            printf("-----------------\n");
+            printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
+            // Anexa os navios no tabuleiro
+            printf("\n");
             printf("Posicione o navio %i no tabuleiro!\n", i + 1);
             if (i == 0)
             {
@@ -64,8 +74,7 @@ void criar_matriz_tabuleiro()
             linha--;
             if(linha < 0 || linha > 7){
                 system("clear||cls");
-                printf("Opcao de linha invalida! \n\n");
-                mostrar_tabuleiro(tabuleiro);
+                printf("Erro: Opcao de linha invalida! \n");
                 continue;
             }
             printf("COLUNA: ");
@@ -73,8 +82,7 @@ void criar_matriz_tabuleiro()
             coluna--;
             if(coluna < 0 || coluna > 7){
                 system("clear||cls");
-                printf("Opcao de coluna invalida! \n\n");
-                mostrar_tabuleiro(tabuleiro);
+                printf("Erro: Opcao de coluna invalida! \n");
                 continue;
             }
 
@@ -82,18 +90,18 @@ void criar_matriz_tabuleiro()
             scanf(" %c", &orientacao);
             if(orientacao != 'H' && orientacao != 'h' && orientacao != 'V' && orientacao != 'v'){
                 system("clear||cls");
-                printf("Orientacao invalida! \n");
+                printf("Erro: Orientacao invalida! \n");
                 continue;
             }
 
-            int valido = posicionarNavio(tabuleiro, linha, coluna, orientacao, i);
+            int valido = posicionarNavio(jogador[jogador_atual].tabuleiro, linha, coluna, orientacao, i);
             if (!valido)
             {
                 system("clear||cls");
-                printf("Posicao invalida para o navio %i! Tente novamente.\n", i + 1);
+                printf("Erro: Posicao invalida para o navio %i! Tente novamente.\n", i + 1);
                 continue;
             }
-            navio(tabuleiro, linha, coluna, orientacao, i);
+            navio(jogador[jogador_atual].tabuleiro, linha, coluna, orientacao, i);
 
             system("clear||cls");
             if (i == 0)
@@ -109,18 +117,11 @@ void criar_matriz_tabuleiro()
                 printf("TABULEIRO ATUALIZADO (+)(+)(+)\n");
             }
 
-            mostrar_tabuleiro(tabuleiro);
-            printf("\n");
             i++;
         }
 
-        for (int i = 0; i < 8; i++)
-        {
-            for (int j = 0; j < 8; j++)
-            {
-                jogador[jogador_atual].tabuleiro[i][j] = tabuleiro[i][j];
-            }
-        }
+        
+        mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);
         printf("%s, voce posicionou todos os seus navios!\n", jogador[jogador_atual].nome);
         system("pause");
         system("clear||cls");
@@ -128,20 +129,21 @@ void criar_matriz_tabuleiro()
             ;  // Limpa o buffer de entrada para evitar loop infinito com scanf em C
         i = 0; // Reseta o contador de navios para o próximo jogador
         // Limpa o tabuleiro para o próximo jogador
-        for (int i = 0; i < 8; i++)
-        {
-            for (int j = 0; j < 8; j++)
-            {
-                tabuleiro[i][j] = '~';
-            }
-        }
+        
+        
     }
     system("clear||cls");
     printf("Mostrar os tabuleiros dos jogadores:\n");
+    
     for (int jogador_atual = 0; jogador_atual < 2; jogador_atual++)
     {
         printf("Tabuleiro de %s:\n", jogador[jogador_atual].nome);
         mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);
+        
         printf("\n");
     }
+    int turno = 0;
+    int rodadas = 1;
+
+   jogar(jogador, rodadas, turno);
 }
