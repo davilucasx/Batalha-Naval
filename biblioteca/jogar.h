@@ -1,4 +1,4 @@
-#ifndef _JOGAR_H
+#ifndef _JOGAR_H//if not defined
 #define _JOGAR_H
 
 int ataque(int linha, int coluna, char tabuleiro[8][8], char tabuleiro_oculto[8][8]);

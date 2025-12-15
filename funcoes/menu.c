@@ -3,7 +3,79 @@
 #include "../biblioteca/menu.h"
 #include "../biblioteca/criarTABULEIRO.h"
 #include "../biblioteca/leitorTXT.h"
+#include "../biblioteca/jogar.h"
 
+
+void salvar(Jogador jogadores[2], int rodada, int turno){
+    FILE *save = fopen("save.txt", "w");
+    printf("Arquivo aberto com sucesso!\n");
+
+    if (save == NULL){
+        printf("Erro ao salvar o jogo.");
+        return;
+    }
+
+    
+
+    for (int j = 0; j < 2; j++){
+        fprintf (save, "%s\n", jogadores[j].nome);
+        for(int i = 0; i < 8; i++){
+            for (int n = 0; n < 8; n++){
+                fprintf(save, "%c", jogadores[j].tabuleiro[i][n]);
+            }
+            fprintf(save, "\n");
+        }
+        for(int i = 0; i < 8; i++){
+            for (int n = 0; n < 8; n++){
+                fprintf(save, "%c", jogadores[j].tabuleiro_oculto[i][n]);
+            }
+            fprintf(save, "\n");
+        }
+        fprintf(save, "%d\n", jogadores[j].acertos);
+        for (int i = 0; i < 3; i++){
+            fprintf(save, "%d\n", jogadores[j].acertos_navio[i]);
+        }
+    }
+    fprintf(save, "%d\n", rodada);
+    fprintf(save, "%d", turno);
+    fclose(save);
+}
+
+void carregar(){
+
+    FILE *save = fopen("save.txt", "r");
+    printf("Arquivo aberto com sucesso!\n");
+    Jogador jogadores[2];
+    int turno, rodada;
+    if (save == NULL){
+        printf("Erro ao carregar o jogo.");
+        return;
+    }
+
+    
+
+    for (int j = 0; j < 2; j++){
+        fscanf (save, "%s", jogadores[j].nome);
+        for(int i = 0; i < 8; i++){
+            for (int n = 0; n < 8; n++){
+                fscanf(save, " %c", &jogadores[j].tabuleiro[i][n]);
+            }
+        }
+        for(int i = 0; i < 8; i++){
+            for (int n = 0; n < 8; n++){
+                fscanf(save, " %c", &jogadores[j].tabuleiro_oculto[i][n]);
+            }
+        }
+        fscanf(save, "%d", &jogadores[j].acertos);
+        for (int i = 0; i < 3; i++){
+            fscanf(save, "%d", &jogadores[j].acertos_navio[i]);
+        }
+    }
+    fscanf(save, "%d", &rodada);
+    fscanf(save, "%d", &turno);
+    fclose(save);
+    jogar (jogadores, rodada, turno);
+}
 
 // Funcao que exibe o menu principal do jogo e lida com as escolhas do usuario // 
 void menu(){
@@ -40,6 +112,7 @@ void menu(){
             criar_matriz_tabuleiro();// chama a funcao que cria o tabuleiro//
             break;
         case 2:
+            carregar();
             printf("(2) Continuar Jogando\n");
             break;
         case 3:

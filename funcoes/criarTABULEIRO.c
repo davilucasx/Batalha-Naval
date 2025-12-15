@@ -146,5 +146,5 @@ void criar_matriz_tabuleiro()
     int turno = 0;// Comeca com o jogador 1//
     int rodadas = 1;
 
-   jogar(jogador, rodadas, turno);
+   jogar(jogador, rodadas, turno);// Chama a funcao jogar//
 }

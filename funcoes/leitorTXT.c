@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h>//file, perror, fgetc, EOF, fclose
 #include "../biblioteca/leitorTXT.h"
 void leitor_texto(const char *nomearquivo)
 {   // Funcao que le o arquivo de texto e exibe seu conteudo no console //
@@ -11,8 +11,8 @@ void leitor_texto(const char *nomearquivo)
 
     char ch;// Variavel para armazenar cada caractere lido //
     while ((ch = fgetc(arquivo)) != EOF) // Le o arquivo caractere por caractere ate o final do arquivo //
-    {
-        putchar(ch);// Exibe o caractere lido no console //
+    {   // O valor lido e guardado na variavel ch 
+        putchar(ch);// Exibe o caractere lido no console 
     }
 
     fclose(arquivo);// Fecha o arquivo apos a leitura //

@@ -12,71 +12,62 @@ int ataquex(int linha, int coluna, Jogador *defensor, Jogador *atacante) {
         int destruido = 0;
         switch (alvo) {
             case 'P':
-                defensor->acertos_navio[0]--;
-                if (defensor->acertos_navio[0] == 0) { printf("Navio P destruido!\n");
+                atacante->acertos_navio[0]--;
+                if (atacante->acertos_navio[0] == 0) { printf("Navio P destruido!\n");
                 destruido = 1;
                 }
                 break;
             case 'M':
-                defensor->acertos_navio[1]--;
-                if (defensor->acertos_navio[1] == 0){ printf("Navio M destruido!\n");
+                atacante->acertos_navio[1]--;
+                if (atacante->acertos_navio[1] == 0){ printf("Navio M destruido!\n");
                 destruido = 1;
                 }
                 break;
             case 'G':
-                defensor->acertos_navio[2]--;
-                if (defensor->acertos_navio[2] == 0){ printf("Navio G destruido!\n");
+                atacante->acertos_navio[2]--;
+                if (atacante->acertos_navio[2] == 0){ printf("Navio G destruido!\n");
                 destruido = 1;
                 }
                 break;
         }
 
         
-        atacante->tabuleiro_oculto[linha][coluna] = 'X';
+        atacante->tabuleiro_oculto[linha][coluna] = 'X';// Marca o acerto no tabuleiro oculto do atacante
 
-        if(!destruido){
+        if(!destruido){// Se o navio nao foi destruido, apenas acertado //
             printf("Acertou o navio!\n");
         }
         
         return 1;
 
-    } else {
+    } else {//Caso agua seja atingida//
         atacante->tabuleiro_oculto[linha][coluna] = 'O';
         printf("Errou o navio, agua!\n");
         return 0;
     }
 }
-
-
-
-int ataque(int linha, int coluna, char tabuleiro[8][8], char tabuleiro_oculto[8][8]) {
-    
-    if(tabuleiro[linha][coluna] == 'P' || tabuleiro[linha][coluna] == 'M' || tabuleiro[linha][coluna] == 'G') {
-        tabuleiro_oculto[linha][coluna] = 'X';  // acertou
-        printf("Acertou o navio!\n");
-        return 1;
-    } else {
-        tabuleiro_oculto[linha][coluna] = 'O';  // errou
-        printf("Errou o navio, agua!\n");
-        return 0;
-    }
-}
-
-void jogar(Jogador jogador[2], int rodadas, int turno){
+void jogar(Jogador jogador[2], int rodadas, int turno){//rodadas=1, turno=0
     int linha;
     int coluna;
     printf("Vamos jogar ! \n");
     int vencedor = 2;
-    while(vencedor == 2){
-        printf("jogador %d prepare-se para atacar o jogador %d \n",turno + 1, !turno + 1);
+   while(vencedor == 2){
+
+        printf("jogador %d prepare-se para atacar o jogador %d \n",turno + 1, !turno + 1);// !turno inverte 0 para 1 
         printf("\n");
         printf("Jogador %d Escolha a linha para atacar: ",turno + 1);
         scanf("%d", &linha);
-        linha--;
-        if(linha < 0 || linha > 7){
+        if (linha == 0) {
+            salvar(jogador, rodadas, turno);
+            printf("jogo salvo");
+            system("pause");
+            continue;
+            }
+        linha--;//Subtrai 1 para ajustar ao indice da matriz//
+        if(linha < 0 || linha > 7){// Verifica se a linha e valida //
                 system("clear||cls");
                 printf("Erro: Opcao de linha invalida! \n");
-                mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);
+                mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);// Mostra o tabuleiro oculto do jogador //
                 continue;
             }
         printf("Jogador %d Escolha a coluna para atacar: ", turno + 1);
@@ -88,17 +79,17 @@ void jogar(Jogador jogador[2], int rodadas, int turno){
                 mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);
                 continue;
             }
-        if(jogador[turno].tabuleiro_oculto[linha][coluna] != '~'){
+        if(jogador[turno].tabuleiro_oculto[linha][coluna] != '~'){// Verifica se a posicao ja foi atacada //
                 system("clear||cls");
                 printf("Erro: Posicao ja atacada! \n");
                 mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);
                 continue;
         }
-        if (ataquex(linha,coluna, &jogador[!turno], &jogador[turno])) jogador[turno].acertos++;
-        mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);
+        if (ataquex(linha,coluna, &jogador[!turno], &jogador[turno])) jogador[turno].acertos++;// Se acertou, incrementa os acertos do jogador //
+        mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);// Mostra o tabuleiro oculto do jogador apos o ataque //
         
-        if (jogador[turno].acertos == 9) {
-            vencedor = turno;
+        if (jogador[turno].acertos == 9) {// Verifica se o jogador venceu (9 navios para vencer) //
+            vencedor = turno;// Define o vencedor //
             break;
         }
         
