@@ -86,16 +86,16 @@ void menu(){
     do
     {
         entrada_invalida = 0;
-        printf("-----------------------\n");
-        printf("  BATALHA NAVAL\n");
-        printf("-----------------------\n");
-        printf("Menu:\n");
-        printf("(0) Sair do Jogo\n");
-        printf("(1) Novo Jogo\n");
-        printf("(2) Continuar Jogando\n");
-        printf("(3) Instrucoes\n");
-        printf("-----------------------\n");
-        printf("Escolha uma opcao: ");
+        printf("=======================================\n");
+        printf("=           BATALHA NAVAL             =\n");
+        printf("=======================================\n");
+        printf("\n");
+        printf("--- MENU PRINCIPAL ---\n");
+        printf("[0] Sair do Jogo\n");
+        printf("[1] Novo Jogo\n");
+        printf("[2] Continuar Jogando\n");
+        printf("[3] Instrucoes\n");
+        printf("\nEscolha uma opcao (0-3): ");
         scanf("%d", &escolha);
         system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
 
@@ -106,9 +106,7 @@ void menu(){
             exit(1);
         case 1:
             system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
-            printf("-----------------------\n");
-            printf("-------Novo Jogo-------\n");
-            printf("-----------------------\n");
+            printf("--- Novo Jogo ---\n");
             criar_matriz_tabuleiro();// chama a funcao que cria o tabuleiro//
             break;
         case 2:
@@ -116,7 +114,7 @@ void menu(){
             printf("(2) Continuar Jogando\n");
             break;
         case 3:
-            printf("--- Conteudo do Arquivo instrucoes.md ---\n");
+            printf("\n--- Instrucoes do jogo ---\n");
             leitor_texto("../instrucoes/instrucoes.txt");// chama a funcao que le o arquivo de instrucoes//
             printf("--------------------------------------\n");
             break;

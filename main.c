@@ -18,7 +18,7 @@ int main()
     menu();
 
     // Comando para retornar ao menu inicial ou sair do programa
-    printf("Retornar ao menu inicial, Sim (s) ou Nao (n) ?");
+    printf("Retornar ao menu inicial, Sim (s) ou Nao (n): ");
     scanf(" %c", &voltar);
     system("clear||cls");//biblioteca stdlib.h//clear e cls para compatibilidade entre sistemas operacionais//
     if (voltar == 's' || voltar == 'S')

@@ -34,8 +34,12 @@ void criar_matriz_tabuleiro()
             jogador[1].tabuleiro_oculto[i][j] = '~';// Tabuleiro oculto do 2 jogador //
         }
     }
-    
-    printf("Bem-vindo ao jogo Batalha Naval!\n");
+    printf("\n");
+    printf("=========================================\n");
+    printf("==         BEM VINDO AO JOGO           ==\n");
+    printf("=========================================\n\n");
+    printf("Vamos comecar! Insira os nomes dos jogadores:\n\n");
+
     printf("Jogador 1, digite seu nome: ");
     scanf("%s", jogador[0].nome);
     printf("Jogador 2, digite seu nome: ");
@@ -52,7 +56,7 @@ void criar_matriz_tabuleiro()
         while (i < 3)
         {
             mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);// Mostra o tabuleiro atual do jogador sem barcos//
-            printf("-----------------\n");
+            printf("\n");
             printf("%s, e hora de posicionar seus navios!\n", jogador[jogador_atual].nome);
             // Anexa os navios no tabuleiro
             printf("\n");
