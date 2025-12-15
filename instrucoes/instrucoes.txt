@@ -1,16 +1,50 @@
-# O objetivo da Batalha Naval e afundar a frota inteira de navios do seu oponente antes que ele afunde a sua.
+O objetivo do jogo e afundar todos os navios do oponente antes que ele afunde os seus.
 
-# Preparacao do Jogo
+PREPARACAO DO JOGO
 
-* Posicionamento dos Navios: Cada jogador organiza secretamente seus navios no tabuleiro "Seu Jogo".
-* Os navios podem ser colocados na vertical ou na horizontal, mas nunca na diagonal.
-* E obrigatorio existir pelo menos um quadrado de espaço (coordenada) entre os navios; eles nao podem se encostar.
-* A frota tipica inclui navios de diferentes tamanhos (por exemplo, um porta-avioes de 5 casas, um cruzador de 4, etc.). 
-* **Nosso jogo utilizara 3 navios de 3, 2 e 1 quadrados de tamanho**
-# Como Jogar
+- Tabuleiro: 8x8. Linhas e colunas numeradas de 1 a 8.
+- Navios utilizados neste jogo:
+  - `P` (Pequeno) : 2 celulas
+  - `M` (Medio)   : 3 celulas
+  - `G` (Grande)  : 4 celulas
+  Total de celulas por jogador: 9.
 
-* Turnos Alternados: Decidam quem comeca. Os jogadores se revezam para "atirar" contra o adversario.
-* **O "Tiro"**: No seu turno, o jogador escolhe uma coordenada no tabuleiro do oponente (ex: "C4").
-  Caso exista um navio oculto nessa posicao, essa parte sera afundada, se for o navio que ocupa 1 quadrado ele sera afundado imediatamente.
-* Repita ate que afunde todos os navios do oponente.
-* Vence quem afundar todos os navios do oponente primeiro.
+- Posicionamento:
+  - Voce pode posicionar os navios manualmente informando linha (1-8), coluna (1-8) e orientacao `H` (horizontal) ou `V` (vertical).
+  - Alternativamente, escolha o posicionamento aleatorio quando solicitado para preencher o tabuleiro automaticamente.
+
+COMO JOGAR
+
+- Turnos alternados: cada jogador escolhe uma coordenada para atacar no tabuleiro do adversario.
+- No seu turno, informe `LINHA` e `COLUNA` (1-8) para atacar.
+- Simbolos exibidos no tabuleiro de alvos:
+  - `~` : agua (nao atacado)
+  - `X` : acerto (parte de um navio atingida)
+  - `O` : erro (agua atingida)
+  - `P`/`M`/`G` : navios (visiveis somente no seu proprio tabuleiro)
+
+- Vitoria: o jogador que acumular 9 acertos (todas as celulas de todos os navios do adversario) vence.
+
+MENU DE PAUSA
+
+- Enquanto o jogo pede a `LINHA`, digite `0` para abrir o menu de pausa com as opcoes:
+  1) Salvar e continuar jogando  -> salva o estado e retorna ao jogo
+  2) Salvar e sair              -> salva o estado e volta ao menu principal
+  3) Voltar ao jogo sem salvar  -> continua o jogo sem salvar
+  4) Sair sem salvar            -> volta ao menu principal sem salvar
+
+- Ao salvar, informe um nome para o arquivo; os saves sao gravados em `save/<nome>.dat`.
+- Se o arquivo ja existir, o jogo pedira confirmacao antes de sobrescrever.
+
+SALVAR / CARREGAR
+
+- Para carregar um save, use o Menu Principal -> "Continuar Jogo" e escolha o save na lista.
+- O sistema mantem um indice em `save/index.txt` com os nomes de salvamento.
+
+OBSERVACOES
+
+- Entradas: sempre use numeros para linha/coluna (1-8). Orientacao: `H` ou `V`.
+- O jogo funciona em terminals Windows/PowerShell; se a exibicao ficar estranha no cmd.exe, execute `chcp 65001` antes.
+- Mensagens e prompts sao em ASCII para compatibilidade com cmd.exe.
+
+Divirta-se e bom jogo!

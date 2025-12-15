@@ -56,6 +56,18 @@ int salvar_jogo_named(Jogador jogador[2], int turno, const char *nome){
     if(!nome || strlen(nome) == 0 || strlen(nome) > 60) return 0;
     char path[260];
     snprintf(path, sizeof(path), "save/%s.dat", nome);
+    /* Se o arquivo já existe, pede confirmação para sobrescrever */
+    FILE *chk = fopen(path, "rb");
+    if (chk) {
+        fclose(chk);
+        printf("Arquivo save/%s.dat ja existe. Sobrescrever? (s/n): ", nome);
+        char resp = 0;
+        if (scanf(" %c", &resp) != 1) return 0;
+        if (resp != 's' && resp != 'S') {
+            /* Cancelado pelo usuario */
+            return -1;
+        }
+    }
     if(!write_save_file(path, jogador, turno)) return 0;
 
     /* Atualiza índice se necessário */

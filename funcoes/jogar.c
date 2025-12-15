@@ -92,29 +92,62 @@ void jogar(Jogador jogador[2], int turno){
                 printf("\n========================================\n");
                 printf("=            MENU DE PAUSA             =\n");
                 printf("========================================\n\n");
-                printf("[1] Continuar jogando\n");
+                printf("[1] Salvar e continuar jogando\n");
                 printf("[2] Salvar e sair\n");
-                printf("[0] Cancelar (voltar ao jogo)\n\n");
-                printf("Escolha uma opcao: ");
+                printf("[3] Voltar ao jogo sem salvar\n");
+                printf("[4] Sair sem salvar\n\n");
+                printf("Escolha uma opcao (1-4): ");
                 int opcao_pausa = 0;
                 scanf("%d", &opcao_pausa);
                 if (opcao_pausa == 1){
+                    /* Salvar e continuar jogando */
+                    char savename_continue[64];
+                    system("clear||cls");
+                    printf("\nDigite um nome para o salvamento (sem espacos): ");
+                    scanf(" %63s", savename_continue);
+                    int _r = salvar_jogo_named(jogador, turno, savename_continue);
+                    if (_r == 1){
+                        printf("\nJogo salvo em save/%s.dat\n", savename_continue);
+                    } else if (_r == -1){
+                        printf("\nSalvamento cancelado pelo usuario.\n");
+                    } else {
+                        printf("\nFalha ao salvar o jogo.\n");
+                    }
+                    system("pause");
                     system("clear||cls");
                     continue; /* volta ao jogo */
                 } else if (opcao_pausa == 2){
                     /* Salvar e sair */
                     char savename[64];
                     system("clear||cls");
-                    printf("\\nDigite um nome para o salvamento (sem espacos): ");
+                    printf("\nDigite um nome para o salvamento (sem espacos): ");
                     scanf(" %63s", savename);
-                    if (salvar_jogo_named(jogador, turno, savename)){
-                        printf("\\nJogo salvo em save/%s.dat\\n", savename);
+                    int _r2 = salvar_jogo_named(jogador, turno, savename);
+                    if (_r2 == 1){
+                        printf("\nJogo salvo em save/%s.dat\n", savename);
+                        system("pause");
+                        return; /* volta ao menu */
+                    } else if (_r2 == -1){
+                        printf("\nSalvamento cancelado pelo usuario. Voltando ao jogo.\n");
+                        system("pause");
+                        system("clear||cls");
+                        continue; /* volta ao jogo */
                     } else {
-                        printf("\\nFalha ao salvar o jogo.\\n");
+                        printf("\nFalha ao salvar o jogo.\n");
+                        system("pause");
+                        system("clear||cls");
+                        continue; /* volta ao jogo */
                     }
-                    system("pause");
+                } else if (opcao_pausa == 3){
+                    /* Voltar ao jogo sem salvar */
+                    system("clear||cls");
+                    continue; /* volta ao jogo */
+                } else if (opcao_pausa == 4){
+                    /* Sair sem salvar: volta ao menu principal */
+                    system("clear||cls");
                     return; /* volta ao menu */
                 } else {
+                    /* Opcao invalida: retornar ao jogo */
                     system("clear||cls");
                     continue; /* volta ao jogo */
                 }
@@ -151,7 +184,7 @@ void jogar(Jogador jogador[2], int turno){
          * do atacante.
          */
         if (ataquex(linha,coluna, &jogador[1-turno], &jogador[turno])) jogador[turno].acertos++;
-        printf("\n📊 Resultado do ataque:\n");
+        printf("\nResultado do ataque:\n");
         mostrar_tabuleiro(jogador[turno].tabuleiro_oculto);
         
         if (jogador[turno].acertos == 9) {

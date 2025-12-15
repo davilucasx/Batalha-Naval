@@ -7,6 +7,23 @@
 #include "../biblioteca/posicionarNavio.h"
 #include "../biblioteca/menu.h"
 #include "../biblioteca/jogar.h"
+#include <time.h>
+
+/* Posicionamento aleatorio auxiliar (file-scope) */
+static void posicionar_aleatorio(Jogador *j){
+    for(int ship = 0; ship < 3; ship++){
+        int placed = 0;
+        while(!placed){
+            int linha_r = rand() % 8;
+            int coluna_r = rand() % 8;
+            char orient = (rand() % 2) ? 'H' : 'V';
+            if(posicionarNavio(j->tabuleiro, linha_r, coluna_r, orient, ship)){
+                navio(j->tabuleiro, linha_r, coluna_r, orient, ship);
+                placed = 1;
+            }
+        }
+    }
+}
 
 
 /*
@@ -59,9 +76,12 @@ void criar_matriz_tabuleiro()
     scanf("%s", jogador[1].nome);
     system("clear||cls");
 
+    srand((unsigned)time(NULL));
+
     // Loop para cada jogador posicionar seus navios
     for (int jogador_atual = 0; jogador_atual < 2; jogador_atual++)
     {
+        i = 0; /* reset contador de navios para este jogador */
         system("clear||cls");
         printf("\n========================================\n");
         printf("POSICIONAMENTO DE NAVIOS - TURNO %d\n", jogador_atual + 1);
@@ -69,6 +89,20 @@ void criar_matriz_tabuleiro()
         printf("Jogador: %s\n\n", jogador[jogador_atual].nome);
         // Exibe o tabuleiro
         printf("Seu Tabuleiro:\n");
+        
+        /* Pergunta se o jogador quer posicionar aleatoriamente */
+        printf("Deseja posicionar os navios de forma aleatoria? (s/n): ");
+        char escolha_aleatorio = 'n';
+        scanf(" %c", &escolha_aleatorio);
+        if (escolha_aleatorio == 's' || escolha_aleatorio == 'S'){
+            posicionar_aleatorio(&jogador[jogador_atual]);
+            system("clear||cls");
+            mostrar_tabuleiro(jogador[jogador_atual].tabuleiro);
+            printf("%s, seus navios foram posicionados aleatoriamente!\n", jogador[jogador_atual].nome);
+            system("pause");
+            system("clear||cls");
+            i = 3; /* marca como todos posicionados */
+        }
         
 
         while (i < 3)
