@@ -4,10 +4,18 @@
 
 
 
+/*
+ * navio(): marca no `tabuleiro` as células correspondentes a um navio
+ * de tipo `i` (0=P,1=M,2=G) a partir da posição inicial
+ * (`linha`,`coluna`) e seguindo a `orientacao` ('H' ou 'V').
+ *
+ * Observação: assume-se que `posicionarNavio` já validou que a
+ * posição é segura (dentro do tabuleiro e sem sobreposição).
+ */
 void navio(char tabuleiro[8][8], int linha, int coluna, char orientacao, int i){
     if (orientacao == 'H' || orientacao == 'h')
             {
-                // Horizontamente
+                /* Preenche horizontalmente o símbolo correspondente */
                 if (i == 0)
                 {
                     for (int k = 0; k < 2; k++)
@@ -33,6 +41,7 @@ void navio(char tabuleiro[8][8], int linha, int coluna, char orientacao, int i){
             }
             else if (orientacao == 'V' || orientacao == 'v')
             {
+                /* Preenche verticalmente o símbolo correspondente */
                 if (i == 0)
                 {
                     for (int k = 0; k < 2; k++)

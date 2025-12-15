@@ -17,6 +17,7 @@
                 "${workspaceFolder}/funcoes/navio.c",
                 "${workspaceFolder}/funcoes/posicionarNavio.c",
                 "${workspaceFolder}/funcoes/jogar.c",
+                "${workspaceFolder}/funcoes/save.c",
                 "-o",
                 "${workspaceFolder}/output/main.exe"
             ],
