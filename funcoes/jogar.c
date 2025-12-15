@@ -48,20 +48,6 @@ int ataquex(int linha, int coluna, Jogador *defensor, Jogador *atacante) {
 }
 
 
-
-int ataque(int linha, int coluna, char tabuleiro[8][8], char tabuleiro_oculto[8][8]) {
-    
-    if(tabuleiro[linha][coluna] == 'P' || tabuleiro[linha][coluna] == 'M' || tabuleiro[linha][coluna] == 'G') {
-        tabuleiro_oculto[linha][coluna] = 'X';  // acertou
-        printf("Acertou o navio!\n");
-        return 1;
-    } else {
-        tabuleiro_oculto[linha][coluna] = 'O';  // errou
-        printf("Errou o navio, agua!\n");
-        return 0;
-    }
-}
-
 void jogar(Jogador jogador[2], int rodadas, int turno){
     int linha;
     int coluna;
