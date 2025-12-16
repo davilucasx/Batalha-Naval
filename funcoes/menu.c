@@ -32,6 +32,7 @@ void salvar(Jogador jogadores[2], int rodada, int turno){
             fprintf(save, "\n");
         }
         fprintf(save, "%d\n", jogadores[j].acertos);
+        fprintf(save, "%d\n", jogadores[j].erros);
         for (int i = 0; i < 3; i++){
             fprintf(save, "%d\n", jogadores[j].acertos_navio[i]);
         }
@@ -67,6 +68,7 @@ void carregar(){
             }
         }
         fscanf(save, "%d", &jogadores[j].acertos);
+        fscanf(save, "%d", &jogadores[j].erros);
         for (int i = 0; i < 3; i++){
             fscanf(save, "%d", &jogadores[j].acertos_navio[i]);
         }
@@ -91,19 +93,17 @@ void menu(){
         printf("=======================================\n");
         printf("\n");
         printf("--- MENU PRINCIPAL ---\n");
-        printf("[0] Sair do Jogo\n");
         printf("[1] Novo Jogo\n");
         printf("[2] Continuar Jogando\n");
         printf("[3] Instrucoes\n");
-        printf("\nEscolha uma opcao (0-3): ");
+        printf("[4] Sair do Jogo\n");
+        printf("\nEscolha uma opcao (1-4): ");
         scanf("%d", &escolha);
         system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
 
         // Escolha do usuário, menu destinado a escolha das opcoes do jogo//
         switch (escolha)
         {
-        case 0:
-            exit(1);
         case 1:
             system("clear||cls"); // Limpa a tela para melhor visualizacao do menu
             printf("--- Novo Jogo ---\n");
@@ -111,13 +111,14 @@ void menu(){
             break;
         case 2:
             carregar();
-            printf("(2) Continuar Jogando\n");
             break;
         case 3:
             printf("\n--- Instrucoes do jogo ---\n");
             leitor_texto("../instrucoes/instrucoes.txt");// chama a funcao que le o arquivo de instrucoes//
             printf("--------------------------------------\n");
             break;
+        case 4:
+            exit(1);
         default:
             printf("Opcao invalida. Tente novamente.\n");
             entrada_invalida = 1;
