@@ -3,14 +3,8 @@
 #include "biblioteca/leitorTXT.h"//leitor_texto
 #include "biblioteca/criarTABULEIRO.h"
 #include "biblioteca/menu.h"//menu
-/* Funcao que recebe jogador e guarda as informacoes dele(ex nome, tabuleiro, tabuleiro_oculto e acertos) */
-struct Jogador
-{
-    char nome[50];
-    char tabuleiro[8][8];//proprio tabuleiro do jogador//
-    char tabuleiro_oculto[8][8];//tabuleiro que o jogador usa para atacar o adversário//
-    int acertos;
-};
+
+
 /*Funcao principal do programa*/
 int main()
 {   
